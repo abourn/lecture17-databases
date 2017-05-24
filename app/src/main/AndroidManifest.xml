@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.uw.providerdemo">
+    package="edu.uw.databasedemo">
 
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="Word List">
+            android:name="edu.uw.databasedemo.MainActivity"
+            android:label="Word List"
+            android:windowSoftInputMode="stateHidden"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +24,8 @@
         </activity>
 
         <provider
-            android:name=".WordProvider"
-            android:authorities="edu.uw.providerdemo.provider"
+            android:name="edu.uw.databasedemo.WordProvider"
+            android:authorities="edu.uw.databasedemo.provider"
             android:enabled="true"
             android:exported="true"/>
     </application>

@@ -1,4 +1,4 @@
-package edu.uw.providerdemo;
+package edu.uw.databasedemo;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 0);
         listView.setAdapter(adapter);
 
-        //load the data
+        //load (read) the data
         getSupportLoaderManager().initLoader(0, null, this);
 
         //handle button input
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-    //adds a word to the list
+    //adds (creates) a word to the list
     public void addWord(View v){
         TextView inputText = (TextView)findViewById(R.id.txtAddWord);
 

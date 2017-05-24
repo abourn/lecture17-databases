@@ -1,4 +1,4 @@
-package edu.uw.providerdemo;
+package edu.uw.databasedemo;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -13,10 +13,10 @@ import android.text.TextUtils;
 
 public class WordProvider extends ContentProvider {
 
-    private static final String TAG = "TodoProvider";
+    private static final String TAG = "WordProvider";
 
     //Content Provider details
-    private static final String AUTHORITY = "edu.uw.providerdemo.provider";
+    private static final String AUTHORITY = "edu.uw.databasedemo.provider";
     private static final String WORD_RESOURCE = "words";
 
     //URI details

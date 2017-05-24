@@ -1,4 +1,4 @@
-package edu.uw.providerdemo;
+package edu.uw.databasedemo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

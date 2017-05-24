@@ -1,4 +1,4 @@
-package edu.uw.providerdemo;
+package edu.uw.databasedemo;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -24,7 +24,7 @@ public class WordDatabase {
     /**
      * The schema and contract for the underlying database.
      */
-    static class WordEntry implements BaseColumns {
+    public static class WordEntry implements BaseColumns {
         //class cannot be instantiated
         private WordEntry(){}
 
@@ -36,7 +36,7 @@ public class WordDatabase {
     /**
      * A class to help open, create, and update the database
      */
-    static class DatabaseHelper extends SQLiteOpenHelper {
+    public static class DatabaseHelper extends SQLiteOpenHelper {
 
         private static final String CREATE_TASKS_TABLE =
                 "CREATE TABLE " + WordEntry.TABLE_NAME + "(" +
