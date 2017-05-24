@@ -1,10 +1,3 @@
-# 05-11 Content Providers
+# Databases and Providers
 
-Code demoing databases and ContentProviders (with a review of Loaders)
-
-To view the completed code (not end of lecture code), use the following commands to check out the `completed` branch:
-
-```
-git fetch
-git checkout completed
-```
+This repository contains code examples demonstrating SQL databases and custom content providers in Android. See the accompanying [lecture notes](https://info448-s17.github.io/lecture-notes/databases.html) for more details.
