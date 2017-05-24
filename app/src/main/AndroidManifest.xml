@@ -23,11 +23,6 @@
             </intent-filter>
         </activity>
 
-        <provider
-            android:name="edu.uw.databasedemo.WordProvider"
-            android:authorities="edu.uw.databasedemo.provider"
-            android:enabled="true"
-            android:exported="true"/>
     </application>
 
 </manifest>
