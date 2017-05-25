@@ -12,10 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="edu.uw.databasedemo.MainActivity"
+            android:name=".MainActivity"
             android:label="Word List"
-            android:windowSoftInputMode="stateHidden"
-            >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +22,11 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:name=".WordProvider"
+            android:authorities="edu.uw.databasedemo.provider"
+            android:enabled="true"
+            android:exported="true"></provider>
     </application>
 
 </manifest>

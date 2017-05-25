@@ -3,6 +3,8 @@ package edu.uw.databasedemo;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.UserDictionary;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 this,
                 R.layout.list_item_layout, //item to inflate
                 null, //cursor to show
-                new String[] {UserDictionary.Words.WORD, UserDictionary.Words.FREQUENCY}, //fields to display
+                new String[] {WordDatabase.Words.COL_WORD, WordDatabase.Words.COL_COUNT}, //fields to display
                 new int[] {R.id.txtItemWord, R.id.txtItemFreq},                           //where to display them
                 0);
         listView.setAdapter(adapter);
@@ -99,12 +101,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         //fields to fetch from the provider
-        String[] projection = {UserDictionary.Words._ID, UserDictionary.Words.WORD, UserDictionary.Words.FREQUENCY};
+        String[] projection = {WordDatabase.Words._ID, WordDatabase.Words.COL_WORD, WordDatabase.Words.COL_COUNT};
 
         //create the CursorLoader to fetch data from the content provider
         CursorLoader loader = new CursorLoader(
                 this,
-                UserDictionary.Words.CONTENT_URI,
+                WordProvider.CONTENT_URI,
                 projection,
                 null, //no filter
                 null,
@@ -137,6 +139,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.menu_test:
+                WordDatabase.DatabaseHelper helper = new WordDatabase.DatabaseHelper(this);
+                SQLiteDatabase db = helper.getWritableDatabase();
+                String[] projection = {WordDatabase.Words.COL_WORD, WordDatabase.Words.COL_COUNT};
+
+                SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+                builder.setTables(WordDatabase.Words.TABLE_NAME);
+                Cursor results = builder.query(db, projection, null, null, null, null, null); // select from...projection (the columns we specified)
+
+                while (results.moveToNext()) {
+                    String word = results.getString(results.getColumnIndexOrThrow(WordDatabase.Words.COL_WORD));
+                    int freq = results.getInt((results.getColumnIndexOrThrow(WordDatabase.Words.COL_COUNT)));
+                    Log.v(TAG, "Clicked on " + word + " ("+freq+")");
+                }
+
 
                 return true;
             default:
